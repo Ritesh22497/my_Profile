@@ -84,7 +84,7 @@ class _ContactSectionState extends State<ContactSection> {
               isMobile
                   ? Column(
                       children: [
-                        _buildContactInfoCards(),
+                        _buildContactInfoCards(isMobile),
                         const SizedBox(height: 24),
                         _buildContactForm(),
                       ],
@@ -92,7 +92,7 @@ class _ContactSectionState extends State<ContactSection> {
                   : Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Expanded(flex: 5, child: _buildContactInfoCards()),
+                        Expanded(flex: 5, child: _buildContactInfoCards(isMobile)),
                         const SizedBox(width: 32),
                         Expanded(flex: 5, child: _buildContactForm()),
                       ],
@@ -104,7 +104,7 @@ class _ContactSectionState extends State<ContactSection> {
     );
   }
 
-  Widget _buildContactInfoCards() {
+  Widget _buildContactInfoCards(bool isMobile) {
     return Column(
       children: [
         _contactCard(
@@ -121,7 +121,7 @@ class _ContactSectionState extends State<ContactSection> {
         const SizedBox(height: 14),
         _contactCard(
           icon: "📞",
-          title: "Primary Phone & WhatsApp",
+          title: "Phone & WhatsApp",
           value: PortfolioData.phonePrimary,
           onCopy: () => widget.controller.copyText(
             PortfolioData.phonePrimary,
@@ -130,72 +130,118 @@ class _ContactSectionState extends State<ContactSection> {
           ),
           onTap: () => widget.controller.callPrimaryPhone(),
         ),
-        const SizedBox(height: 14),
-        _contactCard(
-          icon: "📱",
-          title: "Alternative Contact",
-          value: PortfolioData.phoneSecondary,
-          onCopy: () => widget.controller.copyText(
-            PortfolioData.phoneSecondary,
-            "Phone",
-            onSuccess: (msg) => _showSnackbar(msg),
-          ),
-          onTap: () => widget.controller.callSecondaryPhone(),
-        ),
         const SizedBox(height: 18),
 
         // Direct Action Buttons
-        Row(
-          children: [
-            Expanded(
-              child: ElevatedButton.icon(
-                onPressed: () => widget.controller.openWhatsApp(),
-                icon: const Text("💬"),
-                label: const Text("WhatsApp"),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF25D366),
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+        if (isMobile)
+          Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: () => widget.controller.openWhatsApp(),
+                  icon: const Text("💬"),
+                  label: const Text("Chat on WhatsApp"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF25D366),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: OutlinedButton.icon(
-                onPressed: () => widget.controller.openLinkedIn(),
-                icon: const Icon(Icons.work_rounded, size: 16),
-                label: const Text("LinkedIn"),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  side: const BorderSide(color: Color(0xFF0077B5)),
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () => widget.controller.openLinkedIn(),
+                      icon: const Icon(Icons.work_rounded, size: 16),
+                      label: const Text("LinkedIn"),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        side: const BorderSide(color: Color(0xFF0077B5)),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: () => widget.controller.openGitHub(),
+                      icon: const Icon(Icons.code_rounded, size: 16),
+                      label: const Text("GitHub"),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        side: BorderSide(color: Colors.white.withValues(alpha: 0.3)),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          )
+        else
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton.icon(
+                  onPressed: () => widget.controller.openWhatsApp(),
+                  icon: const Text("💬"),
+                  label: const Text("WhatsApp"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF25D366),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: OutlinedButton.icon(
-                onPressed: () => widget.controller.openGitHub(),
-                icon: const Icon(Icons.code_rounded, size: 16),
-                label: const Text("GitHub"),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  side: BorderSide(color: Colors.white.withValues(alpha: 0.3)),
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+              const SizedBox(width: 10),
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () => widget.controller.openLinkedIn(),
+                  icon: const Icon(Icons.work_rounded, size: 16),
+                  label: const Text("LinkedIn"),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    side: const BorderSide(color: Color(0xFF0077B5)),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () => widget.controller.openGitHub(),
+                  icon: const Icon(Icons.code_rounded, size: 16),
+                  label: const Text("GitHub"),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    side: BorderSide(color: Colors.white.withValues(alpha: 0.3)),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
       ],
     );
   }

@@ -23,22 +23,29 @@ class HeroSection extends StatelessWidget {
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1200),
-          child: (isMobile || isTablet)
-              ? Column(
-                  children: [
-                    _buildContent(context, isMobile: true),
-                    const SizedBox(height: 36),
-                    _buildVisualCard(context, isMobile: true),
-                  ],
-                )
-              : Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(flex: 6, child: _buildContent(context, isMobile: false)),
-                    const SizedBox(width: 48),
-                    Expanded(flex: 4, child: _buildVisualCard(context, isMobile: false)),
-                  ],
-                ),
+          child:
+              (isMobile || isTablet)
+                  ? Column(
+                    children: [
+                      _buildContent(context, isMobile: true),
+                      const SizedBox(height: 36),
+                      _buildVisualCard(context, isMobile: true),
+                    ],
+                  )
+                  : Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 6,
+                        child: _buildContent(context, isMobile: false),
+                      ),
+                      const SizedBox(width: 48),
+                      Expanded(
+                        flex: 4,
+                        child: _buildVisualCard(context, isMobile: false),
+                      ),
+                    ],
+                  ),
         ),
       ),
     );
@@ -74,7 +81,7 @@ class HeroSection extends StatelessWidget {
               Text(
                 "Available for Senior Roles & High-Impact Apps",
                 style: GoogleFonts.inter(
-                  fontSize: 12,
+                  fontSize: 11,
                   fontWeight: FontWeight.w600,
                   color: const Color(0xFF34D399),
                 ),
@@ -99,9 +106,14 @@ class HeroSection extends StatelessWidget {
 
         // Subtitle Gradient
         ShaderMask(
-          shaderCallback: (bounds) => const LinearGradient(
-            colors: [Color(0xFF00D2FF), Color(0xFF3A7BD5), Color(0xFF8B5CF6)],
-          ).createShader(bounds),
+          shaderCallback:
+              (bounds) => const LinearGradient(
+                colors: [
+                  Color(0xFF00D2FF),
+                  Color(0xFF3A7BD5),
+                  Color(0xFF8B5CF6),
+                ],
+              ).createShader(bounds),
           child: Text(
             "🚀 ${PortfolioData.title} • 3+ Years Experience",
             textAlign: isMobile ? TextAlign.center : TextAlign.start,
@@ -141,7 +153,10 @@ class HeroSection extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF00D2FF),
                 foregroundColor: const Color(0xFF050B14),
-                padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 22,
+                  vertical: 15,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -156,7 +171,10 @@ class HeroSection extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.white,
                 side: const BorderSide(color: Color(0xFF25D366), width: 1.4),
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 15,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -170,7 +188,10 @@ class HeroSection extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.white,
                 side: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 15,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -179,23 +200,80 @@ class HeroSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 32),
+        const SizedBox(height: 16),
+
+        // Quick Social Buttons
+        Wrap(
+          spacing: 12,
+          runSpacing: 10,
+          alignment: isMobile ? WrapAlignment.center : WrapAlignment.start,
+          children: [
+            _socialChip(
+              icon: Icons.code_rounded,
+              label: "GitHub",
+              onTap: () => controller.openGitHub(),
+            ),
+            _socialChip(
+              icon: Icons.work_rounded,
+              label: "LinkedIn",
+              onTap: () => controller.openLinkedIn(),
+            ),
+            _socialChip(
+              icon: Icons.email_rounded,
+              label: "Email",
+              onTap: () => controller.sendEmail(),
+            ),
+          ],
+        ),
+        const SizedBox(height: 28),
 
         // Stats Counters
-        Row(
-          mainAxisAlignment:
-              isMobile ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.start,
+        Wrap(
+          spacing: isMobile ? 20 : 32,
+          runSpacing: 16,
+          alignment: isMobile ? WrapAlignment.center : WrapAlignment.start,
           children: [
             _statItem("3+", "Years Exp"),
-            if (!isMobile) const SizedBox(width: 32),
             _statItem("10+", "Production Apps"),
-            if (!isMobile) const SizedBox(width: 32),
             _statItem("500+", "Canvas Templates"),
-            if (!isMobile) const SizedBox(width: 32),
             _statItem("30%", "Perf Boost"),
           ],
         ),
       ],
+    );
+  }
+
+  Widget _socialChip({
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+        decoration: BoxDecoration(
+          color: Colors.white.withValues(alpha: 0.05),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 15, color: const Color(0xFF00D2FF)),
+            const SizedBox(width: 6),
+            Text(
+              label,
+              style: GoogleFonts.inter(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Colors.white70,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -204,9 +282,10 @@ class HeroSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ShaderMask(
-          shaderCallback: (bounds) => const LinearGradient(
-            colors: [Color(0xFF00D2FF), Color(0xFF7928CA)],
-          ).createShader(bounds),
+          shaderCallback:
+              (bounds) => const LinearGradient(
+                colors: [Color(0xFF00D2FF), Color(0xFF7928CA)],
+              ).createShader(bounds),
           child: Text(
             number,
             style: GoogleFonts.inter(
@@ -229,20 +308,19 @@ class HeroSection extends StatelessWidget {
   }
 
   Widget _buildVisualCard(BuildContext context, {required bool isMobile}) {
+    final screenW = MediaQuery.of(context).size.width;
+    final cardW = isMobile ? (screenW - 48).clamp(240.0, 320.0) : 330.0;
+
     return Center(
       child: Container(
-        width: isMobile ? 300 : 330,
-        height: isMobile ? 350 : 380,
+        width: cardW,
+        height: isMobile ? 340 : 380,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(28),
           gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Color(0x6600D2FF),
-              Color(0x667928CA),
-              Colors.transparent,
-            ],
+            colors: [Color(0x6600D2FF), Color(0x667928CA), Colors.transparent],
           ),
           boxShadow: [
             BoxShadow(

@@ -1,3 +1,51 @@
+import 'package:flutter/material.dart';
+
+class AccentTheme {
+  final String name;
+  final Color primary;
+  final Color secondary;
+
+  const AccentTheme({
+    required this.name,
+    required this.primary,
+    required this.secondary,
+  });
+}
+
+class MockupCardData {
+  final String title;
+  final String subtitle;
+  final String? badge;
+  final IconData icon;
+  final Color iconColor;
+  final String? actionText;
+
+  const MockupCardData({
+    required this.title,
+    required this.subtitle,
+    this.badge,
+    required this.icon,
+    required this.iconColor,
+    this.actionText,
+  });
+}
+
+class AppScreenMockup {
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final Color themeColor;
+  final List<MockupCardData> cards;
+
+  const AppScreenMockup({
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+    required this.themeColor,
+    required this.cards,
+  });
+}
+
 class ProjectModel {
   final String id;
   final String title;
@@ -9,6 +57,8 @@ class ProjectModel {
   final List<String> techStack;
   final List<String> highlights;
   final List<String>? keyFeatures;
+  final String? playStoreUrl;
+  final List<AppScreenMockup>? screenMockups;
 
   const ProjectModel({
     required this.id,
@@ -21,6 +71,8 @@ class ProjectModel {
     required this.techStack,
     required this.highlights,
     this.keyFeatures,
+    this.playStoreUrl,
+    this.screenMockups,
   });
 }
 

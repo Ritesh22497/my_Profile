@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../controllers/portfolio_controller.dart';
 import '../../models/portfolio_data.dart';
+import '../widgets/theme_switcher_widget.dart';
 
 class DrawerView extends StatelessWidget {
   final PortfolioController controller;
@@ -52,7 +53,22 @@ class DrawerView extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Text(
+                //   "Theme Accent",
+                //   style: GoogleFonts.inter(
+                //     fontSize: 13,
+                //     color: Colors.white70,
+                //     fontWeight: FontWeight.w600,
+                //   ),
+                // ),
+                ThemeSwitcherWidget(controller: controller),
+              ],
+            ),
+            const SizedBox(height: 16),
             const Divider(color: Colors.white12),
             _drawerTile(context, "About", controller.aboutKey),
             _drawerTile(context, "Skills", controller.skillsKey),
@@ -94,7 +110,11 @@ class DrawerView extends StatelessWidget {
           color: const Color(0xFFCBD5E1),
         ),
       ),
-      trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Colors.white38),
+      trailing: const Icon(
+        Icons.arrow_forward_ios_rounded,
+        size: 14,
+        color: Colors.white38,
+      ),
       onTap: () {
         Navigator.pop(context);
         controller.scrollTo(key);

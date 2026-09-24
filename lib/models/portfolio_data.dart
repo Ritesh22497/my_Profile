@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'portfolio_model.dart';
 
 class PortfolioData {
@@ -147,12 +148,72 @@ class PortfolioData {
         "Video Player",
         "Localization"
       ],
+      keyFeatures: [
+        "Breaking News Feed with Category Filters & Bookmarks",
+        "Short-Form News Video Reels with Smooth Swiping",
+        "Interactive Community Polls & Real-time Public Opinion",
+        "Multilingual Regional Support (Hindi, English, etc.)",
+        "Real-Time FCM Push Notifications for Urgent Headlines",
+        "Razorpay Premium Subscription & Ad-free Reading Mode",
+        "Offline Article Reading & Audio News Narration"
+      ],
       highlights: [
         "Integrated short-form videos and full-length video streaming with caching.",
         "Architected state management using Provider and ChangeNotifier.",
         "Firebase Cloud Messaging (FCM) integration for real-time breaking news alerts.",
         "Razorpay payment gateway workflows for premium reading subscriptions.",
         "Responsive reusable UI components with seamless Dark/Light Mode support.",
+      ],
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.theeminentnews.app",
+      screenMockups: [
+        AppScreenMockup(
+          title: "Breaking News & Live Headlines",
+          subtitle: "Curated Feeds with Category Pills & Instant Alerts",
+          icon: Icons.newspaper_rounded,
+          themeColor: Color(0xFFEF4444),
+          cards: [
+            MockupCardData(
+              title: "Global Tech Summit 2026 Keynote",
+              subtitle: "AI Breakthroughs announced today in generative robotics",
+              badge: "TOP STORY",
+              icon: Icons.flash_on_rounded,
+              iconColor: Color(0xFFEF4444),
+              actionText: "Read Article • 3 min",
+            ),
+            MockupCardData(
+              title: "Economy & Markets Weekly Wrap",
+              subtitle: "Stock indices reach all-time high amidst tech boom",
+              badge: "MARKETS",
+              icon: Icons.trending_up_rounded,
+              iconColor: Color(0xFF10B981),
+              actionText: "Bookmark",
+            ),
+          ],
+        ),
+        AppScreenMockup(
+          title: "Shorts & Video News Reels",
+          subtitle: "Vertical 60-Second Video Bites with Audio Controls",
+          icon: Icons.play_circle_fill_rounded,
+          themeColor: Color(0xFF8B5CF6),
+          cards: [
+            MockupCardData(
+              title: "60-Second Explainer: Space Exploration",
+              subtitle: "New lunar habitat base missions detailed by NASA",
+              badge: "VIDEO REEL",
+              icon: Icons.movie_filter_rounded,
+              iconColor: Color(0xFF8B5CF6),
+              actionText: "Watch Reel",
+            ),
+            MockupCardData(
+              title: "Community Poll: Clean Energy Transition",
+              subtitle: "Vote now • Over 12,450 opinions registered today",
+              badge: "LIVE POLL",
+              icon: Icons.how_to_vote_rounded,
+              iconColor: Color(0xFF00D2FF),
+              actionText: "Cast Vote",
+            ),
+          ],
+        ),
       ],
     ),
     ProjectModel(
@@ -194,6 +255,94 @@ class PortfolioData {
         "Integrated Temple Services module offering virtual darshan booking, special archana, and holy prasad delivery.",
         "Implemented E-Commerce store for authentic Pooja Samagri kits with seamless Razorpay payment gateway checkout.",
         "Real-time 1-on-1 audio/video consultations and remote pooja ceremonies powered by Agora RTC SDK.",
+      ],
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.app.pujari_ji",
+      screenMockups: [
+        AppScreenMockup(
+          title: "Devotee Home & Pooja Booking",
+          subtitle: "Offline & Online Ritual Booking with Verified Pandits",
+          icon: Icons.temple_hindu_rounded,
+          themeColor: Color(0xFFFF9933),
+          cards: [
+            MockupCardData(
+              title: "Online Video Pooja (Agora RTC)",
+              subtitle: "Live 1-on-1 Sankalp & Rudrabhishek ceremony",
+              badge: "LIVE STREAM",
+              icon: Icons.video_call_rounded,
+              iconColor: Color(0xFF00D2FF),
+              actionText: "Book Now (₹1,501)",
+            ),
+            MockupCardData(
+              title: "Offline Home Pooja (Lucknow)",
+              subtitle: "Pandit Ji at your doorstep with verified credentials",
+              badge: "DOORSTEP",
+              icon: Icons.home_work_rounded,
+              iconColor: Color(0xFFFF9933),
+              actionText: "Select Muhurat",
+            ),
+            MockupCardData(
+              title: "Kathavachak Booking",
+              subtitle: "Shrimad Bhagwat & Ram Katha by revered Acharyas",
+              badge: "DISCOURSE",
+              icon: Icons.record_voice_over_rounded,
+              iconColor: Color(0xFFA855F7),
+              actionText: "Check Slots",
+            ),
+          ],
+        ),
+        AppScreenMockup(
+          title: "Daily Hindu Panchang & Muhurat",
+          subtitle: "Live Tithi, Shubh Muhurat, Nakshatra & Rahukaal",
+          icon: Icons.wb_sunny_rounded,
+          themeColor: Color(0xFFF59E0B),
+          cards: [
+            MockupCardData(
+              title: "Today's Tithi & Nakshatra",
+              subtitle: "Shukla Paksha Dashami • Rohini Nakshatra",
+              badge: "AUSPICIOUS",
+              icon: Icons.auto_awesome_rounded,
+              iconColor: Color(0xFFF59E0B),
+            ),
+            MockupCardData(
+              title: "Abhijit Shubh Muhurat",
+              subtitle: "11:45 AM - 12:35 PM (Best for New Beginnings)",
+              badge: "RECOMMENDED",
+              icon: Icons.access_time_filled_rounded,
+              iconColor: Color(0xFF10B981),
+            ),
+            MockupCardData(
+              title: "Rahukaal Alert",
+              subtitle: "03:15 PM - 04:45 PM (Avoid starting new tasks)",
+              badge: "INASPICIOUS",
+              icon: Icons.warning_amber_rounded,
+              iconColor: Color(0xFFEF4444),
+            ),
+          ],
+        ),
+        AppScreenMockup(
+          title: "Pooja Samagri E-Commerce Store",
+          subtitle: "Pure Ritual Kits & Sacred Offerings Delivered",
+          icon: Icons.shopping_bag_rounded,
+          themeColor: Color(0xFF10B981),
+          cards: [
+            MockupCardData(
+              title: "Complete Havan Samagri Kit",
+              subtitle: "41 Pure Ingredients, Dry Coconut & Havan Kund",
+              badge: "BESTSELLER",
+              icon: Icons.local_fire_department_rounded,
+              iconColor: Color(0xFFF97316),
+              actionText: "Add to Cart (₹599)",
+            ),
+            MockupCardData(
+              title: "Gangajal & Cow Ghee (A2)",
+              subtitle: "Sourced from Haridwar • 100% Certified Pure",
+              badge: "CERTIFIED",
+              icon: Icons.water_drop_rounded,
+              iconColor: Color(0xFF00D2FF),
+              actionText: "Add to Cart (₹249)",
+            ),
+          ],
+        ),
       ],
     ),
     ProjectModel(
@@ -258,6 +407,79 @@ class PortfolioData {
         "Implemented dynamic Priest Calendar to manage available dates, auspicious muhurats, and travel service radius.",
         "Integrated Agora video room initialization allowing priests to host and conduct live online poojas directly within the app.",
       ],
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.app.aspujariji",
+      screenMockups: [
+        AppScreenMockup(
+          title: "Priest Real-Time Dashboard",
+          subtitle: "Business Overview, Active Bookings & Revenue",
+          icon: Icons.dashboard_rounded,
+          themeColor: Color(0xFF00D2FF),
+          cards: [
+            MockupCardData(
+              title: "Total Pooja: 148",
+              subtitle: "133 Completed • 12 In-Progress • 3 Pending Leads",
+              badge: "OVERVIEW",
+              icon: Icons.event_available_rounded,
+              iconColor: Color(0xFF00D2FF),
+            ),
+            MockupCardData(
+              title: "Total Revenue: ₹3,42,850",
+              subtitle: "Withdrawn: ₹3,20,000 • Available Balance: ₹22,850",
+              badge: "FINANCES",
+              icon: Icons.account_balance_wallet_rounded,
+              iconColor: Color(0xFF10B981),
+              actionText: "Withdraw",
+            ),
+          ],
+        ),
+        AppScreenMockup(
+          title: "Pending Pooja Requests",
+          subtitle: "Review Incoming Devotee Bookings with 1-Tap Action",
+          icon: Icons.notification_important_rounded,
+          themeColor: Color(0xFFA855F7),
+          cards: [
+            MockupCardData(
+              title: "Satyanarayan Katha (Sharma Ji)",
+              subtitle: "28 Sep, 10:00 AM • Gomti Nagar, Lucknow • ₹2,100",
+              badge: "NEW REQUEST",
+              icon: Icons.person_pin_circle_rounded,
+              iconColor: Color(0xFFA855F7),
+              actionText: "Accept / Decline",
+            ),
+            MockupCardData(
+              title: "Griha Pravesh Pooja (Verma Ji)",
+              subtitle: "02 Oct, 07:30 AM • Aliganj, Lucknow • ₹5,100",
+              badge: "HIGH VALUE",
+              icon: Icons.home_rounded,
+              iconColor: Color(0xFFFF9933),
+              actionText: "Accept / Decline",
+            ),
+          ],
+        ),
+        AppScreenMockup(
+          title: "Live Online Pooja Conducting Room",
+          subtitle: "Agora RTC Video Room with Audio/Video Controls",
+          icon: Icons.videocam_rounded,
+          themeColor: Color(0xFF10B981),
+          cards: [
+            MockupCardData(
+              title: "Live Ritual Streaming",
+              subtitle: "Full HD Video, Echo Cancellation, Devotee Cam",
+              badge: "RTC ACTIVE",
+              icon: Icons.camera_front_rounded,
+              iconColor: Color(0xFF10B981),
+              actionText: "Start Session",
+            ),
+            MockupCardData(
+              title: "Mantra & Shloka Teleprompter",
+              subtitle: "On-screen Vedic verses for accurate recitations",
+              badge: "TOOLKIT",
+              icon: Icons.menu_book_rounded,
+              iconColor: Color(0xFFF59E0B),
+            ),
+          ],
+        ),
+      ],
     ),
     ProjectModel(
       id: "hrms",
@@ -281,6 +503,48 @@ class PortfolioData {
         "Punch-in and punch-out tracking with shift and leave management.",
         "Automated payroll processing logic and role-based access control.",
       ],
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.payroll_project.rashmi_hrms",
+      screenMockups: [
+        AppScreenMockup(
+          title: "Biometric & Geofence Punch",
+          subtitle: "GPS Geofenced Punch-in with Biometric Validation",
+          icon: Icons.fingerprint_rounded,
+          themeColor: Color(0xFF00D2FF),
+          cards: [
+            MockupCardData(
+              title: "Office Geofence: In Perimeter",
+              subtitle: "Verified inside Lucknow HQ (Radius 50m)",
+              badge: "GPS VERIFIED",
+              icon: Icons.location_on_rounded,
+              iconColor: Color(0xFF10B981),
+              actionText: "Punch Out",
+            ),
+            MockupCardData(
+              title: "Shift Timer: 06h 42m elapsed",
+              subtitle: "Shift 09:30 AM - 06:30 PM • 98.4% Punctuality",
+              badge: "ON TRACK",
+              icon: Icons.timer_rounded,
+              iconColor: Color(0xFF00D2FF),
+            ),
+          ],
+        ),
+        AppScreenMockup(
+          title: "Payroll & Salary Slips",
+          subtitle: "Automated Salary Computation with PDF Download",
+          icon: Icons.payments_rounded,
+          themeColor: Color(0xFF10B981),
+          cards: [
+            MockupCardData(
+              title: "Monthly Salary Slip",
+              subtitle: "Net Payable: Computed with PF, Tax & Allowances",
+              badge: "CONFIRMED",
+              icon: Icons.receipt_long_rounded,
+              iconColor: Color(0xFF10B981),
+              actionText: "Download PDF",
+            ),
+          ],
+        ),
+      ],
     ),
     ProjectModel(
       id: "housing-magic-cp",
@@ -302,6 +566,32 @@ class PortfolioData {
         "Google Maps integration with custom pins and microsites.",
         "Personalized lead management for channel partners.",
       ],
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.housingmagic.cp",
+      screenMockups: [
+        AppScreenMockup(
+          title: "Property Discovery & Map Pins",
+          subtitle: "Explore Real Estate with Spatial Filters & Microsites",
+          icon: Icons.map_rounded,
+          themeColor: Color(0xFF10B981),
+          cards: [
+            MockupCardData(
+              title: "Luxury 3BHK Greens Apartment",
+              subtitle: "₹85 Lakhs • Gomti Nagar Extension • Ready to Move",
+              badge: "VERIFIED",
+              icon: Icons.apartment_rounded,
+              iconColor: Color(0xFF10B981),
+              actionText: "Book Visit",
+            ),
+            MockupCardData(
+              title: "Channel Partner Lead Pipeline",
+              subtitle: "24 Active Buyer Leads • 5 Visits Scheduled this week",
+              badge: "HIGH CONV",
+              icon: Icons.people_alt_rounded,
+              iconColor: Color(0xFF00D2FF),
+            ),
+          ],
+        ),
+      ],
     ),
     ProjectModel(
       id: "global-job-mg",
@@ -322,6 +612,33 @@ class PortfolioData {
         "Interactive mobile resume-builder with PDF generation.",
         "End-to-end overseas job application tracking and candidate profiling.",
         "Interview slot scheduling and status notifications.",
+      ],
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.mgheewala_job_portal",
+      screenMockups: [
+        AppScreenMockup(
+          title: "Overseas Recruitment & Applications",
+          subtitle: "International Job Listings & Candidate Tracking",
+          icon: Icons.public_rounded,
+          themeColor: Color(0xFFA855F7),
+          cards: [
+            MockupCardData(
+              title: "Senior Civil Engineer (Dubai, UAE)",
+              subtitle: "Tax-free salary package • Free Visa & Accommodation",
+              badge: "URGENT",
+              icon: Icons.work_rounded,
+              iconColor: Color(0xFFA855F7),
+              actionText: "Apply Now",
+            ),
+            MockupCardData(
+              title: "Mobile Resume Builder & PDF",
+              subtitle: "ATS-optimized international format CV generator",
+              badge: "ATS READY",
+              icon: Icons.picture_as_pdf_rounded,
+              iconColor: Color(0xFFF59E0B),
+              actionText: "Generate CV",
+            ),
+          ],
+        ),
       ],
     ),
     ProjectModel(
