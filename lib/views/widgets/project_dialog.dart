@@ -146,6 +146,57 @@ class ProjectDialog extends StatelessWidget {
                         ),
                       ),
                     ),
+                    if (project.keyFeatures != null &&
+                        project.keyFeatures!.isNotEmpty) ...[
+                      const SizedBox(height: 18),
+                      Text(
+                        "Key Features & Modules",
+                        style: GoogleFonts.inter(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: project.keyFeatures!.map(
+                          (feature) => Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 6,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF00D2FF).withValues(alpha: 0.08),
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: const Color(0xFF00D2FF).withValues(alpha: 0.25),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(
+                                  Icons.check_circle_rounded,
+                                  size: 14,
+                                  color: Color(0xFF00D2FF),
+                                ),
+                                const SizedBox(width: 6),
+                                Text(
+                                  feature,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 12.5,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xFFE2E8F0),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ).toList(),
+                      ),
+                    ],
                     const SizedBox(height: 18),
                     Text(
                       "Full Tech Stack & Tools",

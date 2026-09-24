@@ -8,6 +8,7 @@ class ProjectModel {
   final String description;
   final List<String> techStack;
   final List<String> highlights;
+  final List<String>? keyFeatures;
 
   const ProjectModel({
     required this.id,
@@ -19,6 +20,7 @@ class ProjectModel {
     required this.description,
     required this.techStack,
     required this.highlights,
+    this.keyFeatures,
   });
 }
 
